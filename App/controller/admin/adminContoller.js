@@ -12,5 +12,13 @@ let userCreate = (req, res) =>{
 }
 
 
+let userView = (req, res) =>{
+    res.status(200).json({
+        _status : 1,
+        _massage:"Data view",
+    })
+}
 
-module.exports = {userCreate};
+
+
+module.exports = {userCreate, userView};
