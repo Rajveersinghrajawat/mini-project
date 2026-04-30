@@ -45,5 +45,53 @@ let userView = (req, res) => {
 }
 
 
+let SingleData = async (req, res) => {
 
-module.exports = { userCreate, userView };
+    let { slug } = req.params;
+
+    //Validate Slug
+
+    if(!slug){
+        return res.status(404).json({
+            _status: 2,
+            _massage: 'Slug is Required',
+        })
+    }
+
+    let Data = [
+        {
+            id: 1,
+            title: "India Launches New AI Initiative",
+            description: "The government announced a new AI program to boost innovation and startups.",
+            slug: "india-launches-new-ai-initiative"
+        },
+
+        {
+            id: 2,
+            title: "Stock Market Hits Record High",
+            description: "Sensex and Nifty reached all-time highs driven by IT and banking stocks.",
+            slug: "stock-market-hits-record-high"
+        }
+    ]
+
+    let Viewdata = Data.find(post => post.slug == slug);
+
+    if (!Viewdata) {
+        return res.status(404).json({
+            _status: 0,
+            _massage: 'Data Not Found',
+        })
+    }
+
+
+    res.status(200).json({
+        _status: 1,
+        _massage: 'Data Fetch seuess',
+        _data: Viewdata
+    })
+
+}
+
+
+
+module.exports = { userCreate, userView, SingleData };
