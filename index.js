@@ -9,6 +9,9 @@ app.use(express.json());
 
 app.use('/admin', adminRoutes); // admin routes
 
+app.get('/', (req, res) => {
+    res.send("Server Running 🚀");
+});
 
 
 //server start
